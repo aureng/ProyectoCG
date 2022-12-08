@@ -4,7 +4,7 @@ PROYECTO FINAL CGeIHC LAB Grupo 10
 
 INTEGRANTES:
 Garcia Sanchez Emilio
-Gonzalez PeÃ±a Jared
+Gonzalez Peña Jared
 Rojas Eng Aurelio
 */
 
@@ -34,7 +34,7 @@ Rojas Eng Aurelio
 #include "Model.h"
 #include "Skybox.h"
 
-//para iluminaciÃ³n
+//para iluminación
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
@@ -61,9 +61,6 @@ Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
-//Texture DadoTexture;
-//Texture dadoColoresTexture;
-//Texture estebanDodTexture;
 
 //########## MODELOS ##############
 Model Puesto_tortas;
@@ -85,13 +82,7 @@ Model MegamanX_piernaD;
 Model MegamanX_piernaI;
 Model MegamanX_pieD;
 Model MegamanX_pieI;
-
-//Lambert
-Model Lambert_CabezayTorso;
-Model Lambert_BrazoIzq;
-Model Lambert_Brazoder;
-Model Lambert_PiernaIzq;
-Model Lambert_Piernader;
+Model Escenario;
 
 Skybox skybox_dia;
 Skybox skybox_tarde;
@@ -454,20 +445,6 @@ void CrearDado()
 	meshList.push_back(dado);
 }
 
-//void CrearPastor()
-//{
-//	unsigned int pastor_indices[] = {
-//
-//	};
-//
-//	GLfloat pastor_vertices[] = {
-//
-//	};
-//
-//	Mesh* pastor = new Mesh();
-//	pastor->CreateMesh(pastor_vertices, pastor_indices, 320, 72);
-//	meshList.push_back(pastor);
-//}
 
 void CreateShaders()
 {
@@ -483,34 +460,28 @@ int main()
 	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
 	mainWindow.Initialise();
 
-	CreateObjects();
-	CrearDado();
+	CreateObjects(); //3
+	CrearDado(); //1
 	CreateShaders();
-
 	camera = Camera(glm::vec3(50.0f, 10.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 1.0f, 0.5f);
 
-	//brickTexture = Texture("Textures/brick.png");
-	//brickTexture.LoadTextureA();
-	//dirtTexture = Texture("Textures/dirt.png");
-	//dirtTexture.LoadTextureA();
-	//plainTexture = Texture("Textures/plain.png");
-	//plainTexture.LoadTextureA();
+	brickTexture = Texture("Textures/brick.png");
+	brickTexture.LoadTextureA();
+	dirtTexture = Texture("Textures/dirt.png");
+	dirtTexture.LoadTextureA();
+	plainTexture = Texture("Textures/plain.png");
+	plainTexture.LoadTextureA();
 	pisoTexture = Texture("Textures/piso.tga");
 	pisoTexture.LoadTextureA();
-	//AgaveTexture = Texture("Textures/Agave.tga");
-	//AgaveTexture.LoadTextureA();
-	//DadoTexture = Texture("Textures/dadoscolor.tga");
-	//DadoTexture.LoadTextureA();
-	//dadoColoresTexture = Texture("Textures/dadocolores.tga");
-	//dadoColoresTexture.LoadTextureA();
-	//estebanDodTexture = Texture("Textures/estebandod.tga");
-	//estebanDodTexture.LoadTextureA();
+	AgaveTexture = Texture("Textures/Agave.tga");
+	AgaveTexture.LoadTextureA();
 
 	Puesto_aguas = Model();
 	Puesto_aguas.LoadModel("Models/modelo_aguas.obj");
 	Puesto_tortas = Model();
 	Puesto_tortas.LoadModel("Models/modelo_tortas.obj");
 
+	//######## MEGAMAN #############
 	MegamanX_cabeza = Model();
 	MegamanX_cabeza.LoadModel("Models/MegamanX/megamanX_cabeza.obj");
 	MegamanX_pecho = Model();
@@ -543,43 +514,9 @@ int main()
 	MegamanX_pieD.LoadModel("Models/MegamanX/megamanX_pieD.obj");
 	MegamanX_pieI = Model();
 	MegamanX_pieI.LoadModel("Models/MegamanX/megamanX_pieI.obj");
-	
-	//Lambert
-	Lambert_CabezayTorso = Model();
-	Lambert_CabezayTorso.LoadModel("Models/cuerpo sagrado del cordero corazon de jesus.obj");
-	Lambert_BrazoIzq = Model();
-	Lambert_BrazoIzq.LoadModel("Models/manita izq cordero.obj");
-	Lambert_Brazoder = Model();
-	Lambert_Brazoder.LoadModel("Models/manita der corderol.obj");
-	Lambert_PiernaIzq = Model();
-	Lambert_PiernaIzq.LoadModel("Models/pierna izq cordero.obj");
-	Lambert_Piernader = Model();
-	Lambert_CabezayTorso.LoadModel("Models/pierna der cordero.obj");
+	Escenario = Model();
+	Escenario.LoadModel("Models/escenario.obj");
 
-	//Kitt_M = Model();
-	//Kitt_M.LoadModel("Models/kitt_optimizado.obj");
-	//Llanta_M = Model();
-	//Llanta_M.LoadModel("Models/k_rueda.3ds");
-	//Blackhawk_M = Model();
-	//Blackhawk_M.LoadModel("Models/uh60.obj");
-	//Camino_M = Model();
-	//Camino_M.LoadModel("Models/railroad track.obj");
-	//kitt_sin_cofre = Model();
-	//kitt_sin_cofre.LoadModel("Models/cochesincofre.obj");
-	//cofre_kitt = Model();
-	//cofre_kitt.LoadModel("Models/cofre_kitt.obj");
-	//Dado_Colores = Model();
-	//Dado_Colores.LoadModel("Models/dadocolores.obj");
-	//ToadCircuit = Model();
-	//ToadCircuit.LoadModel("Models/toadcircuit.obj");
-	//CarroLowPoly = Model();
-	//CarroLowPoly.LoadModel("Models/carrolpsinllantas.obj");
-	//CarroLowPoly_Llanta = Model();
-	//CarroLowPoly_Llanta.LoadModel("Models/llantacarrolp.obj");
-	//PaloDeLuz = Model();
-	//PaloDeLuz.LoadModel("Models/palodeluz.obj");
-	//Tele = Model();
-	//Tele.LoadModel("Models/tele.obj");
 
 	std::vector<std::string> skyboxFacesDia;
 	skyboxFacesDia.push_back("Textures/Skybox/skybox_dia_rt.tga");
@@ -615,14 +552,14 @@ int main()
 	unsigned int spotLightCount = 0;
 
 
-	//luz direccional, sÃ³lo 1 y siempre debe de existir
+	//luz direccional, sólo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 		0.5f, 0.3f, //se le mueve el ambientIntensity para que sea de dia o de noche
-		0.0f, 0.0f, -1.0f); //Se mueve la direcciÃ³n para hacer un efecto de movimiento de la luz del sol
+		0.0f, 0.0f, -1.0f); //Se mueve la dirección para hacer un efecto de movimiento de la luz del sol
 	
 	
 
-	//DeclaraciÃ³n de primer luz puntual
+	//Declaración de primer luz puntual
 	pointLights[0] = PointLight(0.897f, 0.900f, 0.801f,
 		0.0f, 1.0f,
 		-10.0f, 1.0f, 20.0f,
@@ -658,7 +595,7 @@ int main()
 		10.0f);
 	spotLightCount++;
 
-	//luz de helicÃ³ptero
+	//luz de helicóptero
 	spotLights[3] = SpotLight(0.865f, 0.880f, 0.431f,
 		1.0f, 2.0f,
 		-25.0f, 30.0f, 0.0f,
@@ -764,7 +701,7 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 
-		//informaciÃ³n en el shader de intensidad especular y brillo
+		//información en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -774,12 +711,12 @@ int main()
 
 
 
-		// luz ligada a la cÃ¡mara de tipo flash
+		// luz ligada a la cámara de tipo flash
 		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//informaciÃ³n al shader de fuentes de iluminaciÃ³n
+		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
@@ -800,6 +737,11 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-700.0f, 1.0f, -700.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Escenario.RenderModel();
 
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
@@ -904,75 +846,16 @@ int main()
 		//	shaderList[0].SetSpotLights(lucesAvanzando, 3);
 
 		//}
-
-		//model = modelcarro;
-		//model = glm::translate(model, glm::vec3(7.3f, -2.6f, -4.3f));
-		//model = glm::rotate(model, -rotLlanta * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//CarroLowPoly_Llanta.RenderModel();
-
-		//model = modelcarro;
-		//model = glm::translate(model, glm::vec3(7.3f, -2.6f, 6.0f));
-		//model = glm::rotate(model, 180*toRadians, glm::vec3(0.0f,1.0f,0.0f));
-		//model = glm::rotate(model, rotLlanta*toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//CarroLowPoly_Llanta.RenderModel();
-
-		//model = modelcarro;
-		//model = glm::translate(model, glm::vec3(-6.6f, -2.6f, -4.3f));
-		//model = glm::rotate(model, -rotLlanta * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//CarroLowPoly_Llanta.RenderModel();
-
-		//model = modelcarro;
-		//model = glm::translate(model, glm::vec3(-6.6f, -2.6f, 6.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::rotate(model, rotLlanta * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//CarroLowPoly_Llanta.RenderModel();
-
-		//model = modelcarro;
-		//model = glm::translate(model, glm::vec3(0.0f, 45.0f, -1.0f));
-		//model = glm::translate(model, glm::vec3(0.0f, mainWindow.getmuevekitt(), 0.0f));
-		//model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		//model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//glm::vec3 luzHelicoptero = glm::vec3(-25.0f + mainWindow.getmuevecoche(), 40.0f + mainWindow.getmuevekitt(), -1.0f);
-		//luzHelicoptero.y -= 0.3f;
-		//spotLights[3].SetFlash(luzHelicoptero, glm::vec3(0.0f, -1.0f, 0.0f));
-
-		//Blackhawk_M.RenderModel();
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(0.0f, 20.0f, -100.0f));
-		////model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//ToadCircuit.RenderModel();
-
 		
-		//DODECAEDRO
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-4.0f, 30.0f, -2.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//estebanDodTexture.UseTexture();
-		meshList[2]->RenderMesh();
 		
 		//blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		/*
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-5.0f, 6.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		DadoTexture.UseTexture();
-		meshList[4]->RenderMesh();
-		*/
+		
 
 
-//Agave Â¿quÃ© sucede si lo renderizan antes del coche y de la pista?
+//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -2.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
