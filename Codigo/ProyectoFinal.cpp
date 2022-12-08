@@ -65,6 +65,7 @@ Texture AgaveTexture;
 //########## MODELOS ##############
 Model Puesto_tortas;
 Model Puesto_aguas;
+Model puesto_tortas_supremo;
 //MegamanX
 Model MegamanX_cabeza;
 Model MegamanX_pecho;
@@ -486,6 +487,9 @@ int main()
 	Puesto_aguas.LoadModel("Models/modelo_aguas.obj");
 	Puesto_tortas = Model();
 	Puesto_tortas.LoadModel("Models/modelo_tortas.obj");
+	puesto_tortas_supremo = Model();
+	puesto_tortas_supremo.LoadModel("Models/puesto_tortas_supremo.obj");
+
 
 	//######## MEGAMAN #############
 	MegamanX_cabeza = Model();
@@ -758,17 +762,17 @@ int main()
 		meshList[2]->RenderMesh();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-700.0f, 1.0f, -700.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Escenario.RenderModel();
 
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
-		/*model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(1.0f, 0.0f, 1.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Puesto_aguas.RenderModel();*/
+		puesto_tortas_supremo.RenderModel();
 
 		//################## JERARQUIA PARA MEGAMAN #######################
 		modelX = glm::mat4(1.0);
@@ -871,9 +875,6 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		
-
-
 //Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -2.0f));
@@ -884,11 +885,7 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
 		
-				
-		
 		glDisable(GL_BLEND);
-
-
 
 		glUseProgram(0);
 
