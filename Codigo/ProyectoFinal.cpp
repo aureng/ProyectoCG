@@ -4,7 +4,7 @@ PROYECTO FINAL CGeIHC LAB Grupo 10
 
 INTEGRANTES:
 Garcia Sanchez Emilio
-Gonzalez Peña Jared
+Gonzalez PeÃ±a Jared
 Rojas Eng Aurelio
 */
 
@@ -34,7 +34,7 @@ Rojas Eng Aurelio
 #include "Model.h"
 #include "Skybox.h"
 
-//para iluminación
+//para iluminaciÃ³n
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
@@ -85,6 +85,13 @@ Model MegamanX_piernaD;
 Model MegamanX_piernaI;
 Model MegamanX_pieD;
 Model MegamanX_pieI;
+
+//Lambert
+Model Lambert_CabezayTorso;
+Model Lambert_BrazoIzq;
+Model Lambert_Brazoder;
+Model Lambert_PiernaIzq;
+Model Lambert_Piernader;
 
 Skybox skybox_dia;
 Skybox skybox_tarde;
@@ -536,6 +543,18 @@ int main()
 	MegamanX_pieD.LoadModel("Models/MegamanX/megamanX_pieD.obj");
 	MegamanX_pieI = Model();
 	MegamanX_pieI.LoadModel("Models/MegamanX/megamanX_pieI.obj");
+	
+	//Lambert
+	Lambert_CabezayTorso = Model();
+	Lambert_CabezayTorso.LoadModel("Models/cuerpo sagrado del cordero corazon de jesus.obj");
+	Lambert_BrazoIzq = Model();
+	Lambert_BrazoIzq.LoadModel("Models/manita izq cordero.obj");
+	Lambert_Brazoder = Model();
+	Lambert_Brazoder.LoadModel("Models/manita der corderol.obj");
+	Lambert_PiernaIzq = Model();
+	Lambert_PiernaIzq.LoadModel("Models/pierna izq cordero.obj");
+	Lambert_Piernader = Model();
+	Lambert_CabezayTorso.LoadModel("Models/pierna der cordero.obj");
 
 	//Kitt_M = Model();
 	//Kitt_M.LoadModel("Models/kitt_optimizado.obj");
@@ -596,14 +615,14 @@ int main()
 	unsigned int spotLightCount = 0;
 
 
-	//luz direccional, sólo 1 y siempre debe de existir
+	//luz direccional, sÃ³lo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 		0.5f, 0.3f, //se le mueve el ambientIntensity para que sea de dia o de noche
-		0.0f, 0.0f, -1.0f); //Se mueve la dirección para hacer un efecto de movimiento de la luz del sol
+		0.0f, 0.0f, -1.0f); //Se mueve la direcciÃ³n para hacer un efecto de movimiento de la luz del sol
 	
 	
 
-	//Declaración de primer luz puntual
+	//DeclaraciÃ³n de primer luz puntual
 	pointLights[0] = PointLight(0.897f, 0.900f, 0.801f,
 		0.0f, 1.0f,
 		-10.0f, 1.0f, 20.0f,
@@ -639,7 +658,7 @@ int main()
 		10.0f);
 	spotLightCount++;
 
-	//luz de helicóptero
+	//luz de helicÃ³ptero
 	spotLights[3] = SpotLight(0.865f, 0.880f, 0.431f,
 		1.0f, 2.0f,
 		-25.0f, 30.0f, 0.0f,
@@ -745,7 +764,7 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 
-		//información en el shader de intensidad especular y brillo
+		//informaciÃ³n en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -755,12 +774,12 @@ int main()
 
 
 
-		// luz ligada a la cámara de tipo flash
+		// luz ligada a la cÃ¡mara de tipo flash
 		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//información al shader de fuentes de iluminación
+		//informaciÃ³n al shader de fuentes de iluminaciÃ³n
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
@@ -953,7 +972,7 @@ int main()
 		*/
 
 
-//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
+//Agave Â¿quÃ© sucede si lo renderizan antes del coche y de la pista?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -2.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
