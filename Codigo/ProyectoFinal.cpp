@@ -82,6 +82,12 @@ Model MegamanX_piernaD;
 Model MegamanX_piernaI;
 Model MegamanX_pieD;
 Model MegamanX_pieI;
+//Lambert
+Model Lambert_CabezayTorso;
+Model Lambert_BrazoIzq;
+Model Lambert_Brazoder;
+Model Lambert_PiernaIzq;
+Model Lambert_Piernader;
 Model Escenario;
 
 Skybox skybox_dia;
@@ -514,6 +520,19 @@ int main()
 	MegamanX_pieD.LoadModel("Models/MegamanX/megamanX_pieD.obj");
 	MegamanX_pieI = Model();
 	MegamanX_pieI.LoadModel("Models/MegamanX/megamanX_pieI.obj");
+
+	//Lambert
+	Lambert_CabezayTorso = Model();
+	Lambert_CabezayTorso.LoadModel("Models/cuerpo sagrado del cordero corazon de jesus.obj");
+	Lambert_BrazoIzq = Model();
+	Lambert_BrazoIzq.LoadModel("Models/manita izq cordero.obj");
+	Lambert_Brazoder = Model();
+	Lambert_Brazoder.LoadModel("Models/manita der corderol.obj");
+	Lambert_PiernaIzq = Model();
+	Lambert_PiernaIzq.LoadModel("Models/pierna izq cordero.obj");
+	Lambert_Piernader = Model();
+	Lambert_CabezayTorso.LoadModel("Models/pierna der cordero.obj");
+
 	Escenario = Model();
 	Escenario.LoadModel("Models/escenario.obj");
 
