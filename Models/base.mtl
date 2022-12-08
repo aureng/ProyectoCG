@@ -1,0 +1,360 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 08.12.2022 04:06:31
+
+newmtl 02___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\Building1_albedo.jpeg
+
+newmtl 01___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\khurt-williams-rvIWNhUEAdk-unsplash.jpg
+
+newmtl 07___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\House_06_metalroofing_mat_Base_Color.jpeg
+
+newmtl 03___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\House_06_mat_Base_Color.jpeg
+
+newmtl 09___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\Contemporary_Apartments_2_d.png
+
+newmtl 14___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\road texture pack-seamless (1).jpeg
+
+newmtl 13___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\CrossingRoad.jpeg
+
+newmtl 15___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\ASIAN_TOWER_BLOCK_standardSurface1_BaseCol.png
+
+newmtl 19___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\ASIAN_TOWER_BLOCK_standardSurface1_Roughne.png
+
+newmtl farola___auto_
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\oxxo_d.png
+
+newmtl farola_wire_204204204
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\barriers_and_bench.jpg
+
+newmtl Mat_2
+	Kd 0.2157 0.2157 0.2157
+	Ks 0.0000 0.0000 0.0000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.5000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+
+newmtl farola_Color_M02
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\cones_and_signs.jpg
+
+newmtl 21___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\PetStock_d.png
+
+newmtl farola_Metal_Aluminum_Anodized
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd -bm 0.0000 Textures\Map__1_MultiTile.tga
+
+newmtl farola_Metal_Rough
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\01 - Default_BaseColor.png
+
+newmtl Default
+	Kd 0.7000 0.7000 0.7000
+	Ks 1.0000 1.0000 1.0000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.5000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+
+newmtl farola_Translucent_Glass_Gray
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\RoadSignAtlas2.png
+
+newmtl farola_Color_M09
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\RoadSignAtlas1.png
+
+newmtl farola_Metal_Aluminum_Anodized_0
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\Wood1_albedo.jpg
+
+newmtl farola_Color_M08
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\billboards_ID_lambert4SG_BaseColor.png
+
+newmtl 16___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\busSTOP NYC_Material.001_BaseColor.png
+
+newmtl 17___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\FkNT99-12m.png
+
+newmtl 18___Default
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.9000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Textures\shop_1TEX.png
