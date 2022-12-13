@@ -13,11 +13,10 @@ public:
 	GLfloat getBufferHeight() { return bufferHeight; }
 	GLfloat getXChange();
 	GLfloat getYChange();
-	GLfloat getmuevex() { return muevex; }
-	GLfloat getmuevecoche() { return muevecoche; }
-	GLfloat getmuevekitt() { return muevekitt; }
-	GLfloat getmuevecofreaudi() { return muevecofreaudi;}
-	GLfloat getmuevecofrekitt() { return muevecofrekitt; }
+	GLfloat getCabezaR() { return cabezaR; }
+	GLfloat getMusloDR() { return musloDR; }
+	GLfloat getPiernaDR() { return piernaDR; }
+	GLfloat getMov() { return mov; }
 	GLboolean getmovimientoHelicoptero() { return movimientoHelicoptero; }
 	GLboolean getBandera() { return bandera; }
 	bool getShouldClose() {
@@ -36,7 +35,7 @@ private:
 	GLfloat lastY;
 	GLfloat xChange;
 	GLfloat yChange;
-	GLfloat muevex,muevecoche,muevekitt,muevecofreaudi, muevecofrekitt;
+	GLfloat cabezaR,musloDR, piernaDR,mov;
 	GLboolean movimientoHelicoptero, bandera;
 	bool mouseFirstMoved;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
