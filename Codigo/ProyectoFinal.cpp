@@ -4,7 +4,7 @@ PROYECTO FINAL CGeIHC LAB Grupo 10
 
 INTEGRANTES:
 Garcia Sanchez Emilio
-Gonzalez Peña Jared
+Gonzalez PeÃ±a Jared
 Rojas Eng Aurelio
 */
 
@@ -34,13 +34,15 @@ Rojas Eng Aurelio
 #include "Model.h"
 #include "Skybox.h"
 
-//para iluminación
+//para iluminaciÃ³n
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "SpotLight.h"
 #include "Material.h"
 const float toRadians = 3.14159265f / 180.0f;
+
+int prender = 0;
 
 //########## VARIABLES DE ANIMACION ##############
 //float movCoche;
@@ -65,7 +67,6 @@ Texture AgaveTexture;
 //########## MODELOS ##############
 Model Puesto_tortas;
 Model Puesto_aguas;
-Model puesto_tortas_supremo;
 //MegamanX
 Model MegamanX_cabeza;
 Model MegamanX_pecho;
@@ -104,15 +105,13 @@ Material Material_opaco;
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
 static double limitFPS = 1.0 / 60.0;
-
+float luz = 0.8f;
 //########## LUCES ##############
 // luz direccional
 DirectionalLight mainLight;
 //para declarar varias luces de tipo pointlight
 PointLight pointLights[MAX_POINT_LIGHTS];
 SpotLight spotLights[MAX_SPOT_LIGHTS];
-SpotLight lucesAvanzando[MAX_SPOT_LIGHTS];
-SpotLight lucesRetrocediendo[MAX_SPOT_LIGHTS];
 
 
 // Vertex Shader
@@ -487,9 +486,6 @@ int main()
 	Puesto_aguas.LoadModel("Models/modelo_aguas.obj");
 	Puesto_tortas = Model();
 	Puesto_tortas.LoadModel("Models/modelo_tortas.obj");
-	puesto_tortas_supremo = Model();
-	puesto_tortas_supremo.LoadModel("Models/puesto_tortas_supremo.obj");
-
 
 	//######## MEGAMAN #############
 	MegamanX_cabeza = Model();
@@ -575,81 +571,70 @@ int main()
 	unsigned int spotLightCount = 0;
 
 
-	//luz direccional, sólo 1 y siempre debe de existir
+	//luz direccional, sÃ³lo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-		0.5f, 0.3f, //se le mueve el ambientIntensity para que sea de dia o de noche
-		0.0f, 0.0f, -1.0f); //Se mueve la dirección para hacer un efecto de movimiento de la luz del sol
-	
+		0.8f, 0.3f, //se le mueve el ambientIntensity para que sea de dia o de noche
+		0.0f, 0.0f, -1.0f); //Se mueve la direcciÃ³n para hacer un efecto de movimiento de la luz del sol
 	
 
-	//Declaración de primer luz puntual
-	pointLights[0] = PointLight(0.897f, 0.900f, 0.801f,
-		0.0f, 1.0f,
-		-10.0f, 1.0f, 20.0f,
-		0.5f, 0.1f, 0.1f); //menos es mayor alcance
+	//luz stop
+	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+		0.5f, 0.5f,
+		76.733f, 4.916f, -75.802f,
+		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
-	
-	
-	// #################### SPOTLIGHTS ######################
-	//linterna de camara
-	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.0f, 2.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, -1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		5.0f);
-	spotLightCount++;
 
-	//luz faro delante
-	spotLights[1] = SpotLight(0.502f, 0.909f, 0.930f,
-		1.0f, 1.0f,
-		-25.0f, 2.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		10.0f);
-	spotLightCount++;
+	//luz intermitente
+	pointLights[1] = PointLight(1.0f, 0.4f, 0.0f,
+		0.5f, 0.5f,
+		76.733f, 4.916f, -88.423f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
 
-	//luz faro atras
-	spotLights[2] = SpotLight(0.860f, 0.112f, 0.112f,
-		1.0f, 1.0f,
-		25.0f, 2.0f, 0.0f,
-		-1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		10.0f);
-	spotLightCount++;
-
-	//luz de helicóptero
-	spotLights[3] = SpotLight(0.865f, 0.880f, 0.431f,
+	//luz de farola
+	spotLights[0] = SpotLight(1.0f, 1.0f, 0.8f,
 		1.0f, 2.0f,
-		-25.0f, 30.0f, 0.0f,
-		0.0f, -1.0f, 0.0f,
+		17.624f, 31.955f, -44.614f,
+		-0.3f, -1.0f, 0.0f,
 		1.0f, 0.0f, 0.0f,
-		25.0f);
+		16.0f);
 	spotLightCount++;
 
-	//PARA LAS LUCES APAGADAS : Linterna de camara
-	lucesAvanzando[0] = spotLights[0];
-	
-	//Luz trasera
-	lucesAvanzando[1] = SpotLight(0.502f, 0.909f, 0.930f,
-		1.0f, 1.0f,
-		-25.0f, 2.0f, 0.0f,
+	//luz de farola
+	spotLights[1] = SpotLight(1.0f, 1.0f, 0.8f,
+		1.0f, 2.0f,
+		-15.624f, 31.955f, -44.614f,
+		0.3f, -1.0f, 0.0f,
 		1.0f, 0.0f, 0.0f,
+		16.0f);
+	spotLightCount++;
+
+	//luz de farola
+	spotLights[2] = SpotLight(1.0f, 1.0f, 0.8f,
+		1.0f, 2.0f,
+		17.624f, 31.955f, 88.765f,
+		-0.3f, -1.0f, 0.0f,
 		1.0f, 0.0f, 0.0f,
-		10.0f);
+		16.0f);
+	spotLightCount++;
 
-	//Luz trasera
-	lucesAvanzando[2] = spotLights[2];
-
-	lucesRetrocediendo[0] = spotLights[0];
-	lucesRetrocediendo[1] = spotLights[1];
-	lucesRetrocediendo[2] = SpotLight(0.860f, 0.112f, 0.112f,
-		1.0f, 1.0f,
-		25.0f, 2.0f, 0.0f,
-		-1.0f, 0.0f, 0.0f,
+	//luz de farola
+	spotLights[3] = SpotLight(1.0f, 1.0f, 0.8f,
+		1.0f, 2.0f,
+		-15.624f, 31.955f, 88.765f,
+		0.3f, -1.0f, 0.0f,
 		1.0f, 0.0f, 0.0f,
-		10.0f);
+		16.0f);
+	spotLightCount++;
 
+	//luz de farola
+	spotLights[4] = SpotLight(1.0f, 1.0f, 0.8f,
+		1.0f, 2.0f,
+		-198.163f, 31.469f, -55.39f,
+		0.0f, -1.0f, -0.3f,
+		1.0f, 0.0f, 0.0f,
+		16.0f);
+	spotLightCount++;
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
@@ -712,6 +697,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		if (mainWindow.getBandera()) {
 			skybox_tarde.DrawSkybox(camera.calculateViewMatrix(), projection);
+			mainLight.UseLight(luz, luz, luz, luz);
 		}
 		else {
 			skybox_dia.DrawSkybox(camera.calculateViewMatrix(), projection);
@@ -724,7 +710,7 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 
-		//información en el shader de intensidad especular y brillo
+		//informaciÃ³n en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -734,12 +720,12 @@ int main()
 
 
 
-		// luz ligada a la cámara de tipo flash
-		glm::vec3 lowerLight = camera.getCameraPosition();
-		lowerLight.y -= 0.3f;
-		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
+		// luz ligada a la cÃ¡mara de tipo flash
+		//glm::vec3 lowerLight = camera.getCameraPosition();
+		//lowerLight.y -= 0.3f;
+		//spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//información al shader de fuentes de iluminación
+		//informaciÃ³n al shader de fuentes de iluminaciÃ³n
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
@@ -769,10 +755,11 @@ int main()
 
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		/*model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(1.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		puesto_tortas_supremo.RenderModel();
+		Puesto_aguas.RenderModel();*/
 
 		//################## JERARQUIA PARA MEGAMAN #######################
 		modelX = glm::mat4(1.0);
@@ -875,7 +862,7 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
+//Agave Â¿quÃ© sucede si lo renderizan antes del coche y de la pista?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -2.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
