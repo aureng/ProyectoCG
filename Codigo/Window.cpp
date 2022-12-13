@@ -13,12 +13,10 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 {
 	width = windowWidth;
 	height = windowHeight;
-	muevex = 2.0f;
-	muevecoche = 1.0f;
-	muevekitt = 1.0f;
-	muevecofreaudi = 1.0f;
-	muevecofrekitt = 1.0f;
-	movimientoHelicoptero = false;
+	cabezaR = 0.0f;
+	musloDR = 0.0f;
+	piernaDR = 0.0f;
+	mov = 0.0f;
 	bandera = false;
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -27,10 +25,10 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 }
 int Window::Initialise()
 {
-	//Inicialización de GLFW
+	//InicializaciÃ³n de GLFW
 	if (!glfwInit())
 	{
-		printf("Falló inicializar GLFW");
+		printf("FallÃ³ inicializar GLFW");
 		glfwTerminate();
 		return 1;
 	}
@@ -50,7 +48,7 @@ int Window::Initialise()
 		glfwTerminate();
 		return 1;
 	}
-	//Obtener tamaño de Buffer
+	//Obtener tamaÃ±o de Buffer
 	glfwGetFramebufferSize(mainWindow, &bufferWidth, &bufferHeight);
 
 	//asignar el contexto
@@ -65,7 +63,7 @@ int Window::Initialise()
 
 	if (glewInit() != GLEW_OK)
 	{
-		printf("Falló inicialización de GLEW");
+		printf("FallÃ³ inicializaciÃ³n de GLEW");
 		glfwDestroyWindow(mainWindow);
 		glfwTerminate();
 		return 1;
@@ -76,7 +74,7 @@ int Window::Initialise()
 							 
 							 //Asignar Viewport
 	glViewport(0, 0, bufferWidth, bufferHeight);
-	//Callback para detectar que se está usando la ventana
+	//Callback para detectar que se estÃ¡ usando la ventana
 	glfwSetWindowUserPointer(mainWindow, this);
 }
 
@@ -110,10 +108,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
-	if (key == GLFW_KEY_Y)
-	{
-		theWindow-> muevex += 1.0;
-	}
+	
 	if (key == GLFW_KEY_P)
 	{
 		if (action == GLFW_PRESS || action == GLFW_REPEAT)
@@ -125,59 +120,38 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 			theWindow->bandera = false;
 		}
 	}
+
 	if (key == GLFW_KEY_U)
 	{
-		theWindow-> muevex -= 1.0;
+		theWindow->cabezaR += 1.0f;
 	}
-	if (key == GLFW_KEY_G)
+	if (key == GLFW_KEY_I)
 	{
-		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-		{
-			theWindow->muevecoche += 1.0;
-			theWindow->movimientoHelicoptero = true;
-			theWindow->bandera = true;
-		}
-		else if (action == GLFW_RELEASE)
-		{
-			theWindow->movimientoHelicoptero = false;
-			theWindow->bandera = false;
-		}
+		theWindow->cabezaR -= 1.0f;
 	}
-	if (key == GLFW_KEY_B)
+	if (key == GLFW_KEY_Y)
 	{
-		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-		{
-			theWindow->muevecoche -= 1.0;
-			theWindow->movimientoHelicoptero = true;
-		}
-		else if (action == GLFW_RELEASE)
-		{
-			theWindow->movimientoHelicoptero = false;
-		}
+		theWindow->mov += 1.0f;
 	}
 	if (key == GLFW_KEY_H)
 	{
-		theWindow->muevekitt += 1.0;
+		theWindow->mov -= 1.0f;
 	}
-	if (key == GLFW_KEY_N)
+	if (key == GLFW_KEY_O)
 	{
-		theWindow->muevekitt -= 1.0;
+		theWindow->musloDR += 1.0f;
 	}
-	if (key == GLFW_KEY_F)
+	if (key == GLFW_KEY_P)
 	{
-		theWindow->muevecofreaudi += 2.0;
-	}
-	if (key == GLFW_KEY_V)
-	{
-		theWindow->muevecofreaudi -= 2.0;
+		theWindow->musloDR -= 1.0f;
 	}
 	if (key == GLFW_KEY_J)
 	{
-		theWindow->muevecofrekitt += 2.0;
+		theWindow->piernaDR += 1.0f;
 	}
-	if (key == GLFW_KEY_M)
+	if (key == GLFW_KEY_K)
 	{
-		theWindow->muevecofrekitt -= 2.0;
+		theWindow->piernaDR -= 1.0f;
 	}
 
 	if (key >= 0 && key < 1024)
